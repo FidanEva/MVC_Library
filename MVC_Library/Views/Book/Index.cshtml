@@ -1,0 +1,52 @@
+﻿@using MVC_Library.Models.Entity
+@model List<tbl_book>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>Books</h2>
+
+@using (Html.BeginForm("Index", "Book", FormMethod.Get))
+{
+    @*<input type="submit" placeholder="Search" class="form-control" style="margin: 20px auto" />*@
+    <div class="row"style="margin: 20px auto">
+        @*<b>Search</b>@Html.TextBox("p", new { @class = "form-control" })*@
+        <input class="form-control" type="text" name="p" placeholder="Search" />
+        @*<input class="col-md-3 form-control" type="submit" value="Search"/>*@
+    </div>
+}
+
+<table class="table table-bordered">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Writer</th>
+        <th>Category</th>
+        <th>Publication year</th>
+        <th>Publisher</th>
+        <th>Page</th>
+        <th>Status</th>
+        <th>Delete</th>
+        <th>Update</th>
+    </tr>
+
+    @foreach (var i in Model)
+    {
+        <tr>
+            <td>@i.id</td>
+            <td>@i.name</td>
+            <td>@i.tbl_writer.name&nbsp @i.tbl_writer.surname</td>
+            <td>@i.tbl_category.name</td>
+            <td>@i.publication_year</td>
+            <td>@i.publisher</td>
+            <td>@i.page</td>
+            <td>@i.book_status</td>
+            <td><a href="/Book/DelBook/@i.id" onclick = "return confirm('Are you sure remove this category with the name of @i.name?')"  class="btn btn-danger">Delete</a></td>
+            <td><a href="/Book/BringBook/@i.id" class="btn btn-success">Update</a></td>
+        </tr>
+
+    }
+</table>
+<a href="/Book/AddBook" class="btn btn-primary">Add book</a>
+

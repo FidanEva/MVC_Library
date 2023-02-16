@@ -1,0 +1,35 @@
+﻿@using MVC_Library.Models.Entity
+@model List<tbl_writer>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>Writers</h2>
+
+<table class="table table-bordered">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Detail</th>
+        <th>Delete</th>
+        <th>Update</th>
+    </tr>
+    @foreach (var i in Model)
+    {
+        <tr>
+            <td>@i.id</td>
+            <td>@i.name</td>
+            <td>@i.surname</td>
+            <td>@i.detail</td>
+            @*<td><a href ="/Writer/DelWriter/@i.id"class="btn btn-danger">Delete</a></td>*@
+            <td>@Html.ActionLink("Delete", "DelWriter", new { id = i.id }, new { @class = "btn btn-danger", onclick = "return confirm('Are you sure remove this column')" }) </td>
+            <td><a href="/Writer/BringWriter/@i.id" class="btn btn-success">Update</a></td>
+        </tr>
+    }
+</table>
+<div>
+    <a href="/Writer/AddWriter" class="btn btn-primary">Add new writer</a>
+</div>
+

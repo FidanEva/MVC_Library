@@ -1,0 +1,29 @@
+﻿@using MVC_Library.Models.Entity
+@model List<tbl_category>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>Categories</h2>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Category ID</th>
+        <th>Category Name</th>
+        <th>Delete</th>
+        <th>Update</th>
+    </tr>
+    @foreach(var ctg in Model)
+    {
+        <tr>
+            <td>@ctg.id</td>
+            <td>@ctg.name</td>
+            @*<td><a href="/Category/DelCategory/@ctg.id" class="btn btn-danger">Delete</a></td>*@
+            @*<td>@Html.ActionLink("Delete", "DelCategory", new { id = ctg.id }, new { @class = "btn btn-danger", onclick = "return confirm('Are you sure remove this column')" }) </td>*@
+            <td><a href="/Category/DelCategory/@ctg.id" onclick = "return confirm('Are you sure remove this category with the name of @ctg.name?')" class="btn btn-danger" disabled>Delete</a> </td>
+            <td><a href="/Category/BringCategory/@ctg.id" class="btn btn-success">Update</a></td>
+        </tr>
+    }
+</table>
+<a href="/Category/AddCategory" class="btn btn-primary" style="margin-bottom: 20px">Add new category</a>

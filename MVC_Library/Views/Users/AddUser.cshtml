@@ -1,0 +1,49 @@
+﻿@model MVC_Library.Models.Entity.tbl_users
+@{
+    ViewBag.Title = "AddUser";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>Add User</h2>
+
+<form class="form-gorup" method="post">
+    <div style="margin-top: 20px">
+        <label>Name</label>
+        @*<input type="text" class="form-control" name="employee">*@
+        @Html.TextBoxFor(x => x.name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.name, "", new { @style = "color: red" })
+    </div>
+    <div style="margin-top: 20px">
+        <label>Surname</label>
+        @Html.TextBoxFor(x => x.surname, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.surname, "", new { @style = "color: red" })
+    </div>
+    <div style="margin-top: 20px">
+        <label>Email address</label>
+        @Html.TextBoxFor(x => x.email, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.email, "", new { @style = "color: red" })
+    </div>
+    <div style="margin-top: 20px">
+        <label>Password</label>
+        @Html.TextBoxFor(x => x.password, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.password, "", new { @style = "color: red" })
+    </div>
+    <div style="margin-top: 20px">
+        <label>User name</label>
+        @Html.TextBoxFor(x => x.user_name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.user_name, "", new { @style = "color: red" })
+    </div>
+    <div style="margin-top: 20px">
+        <label>Phone number</label>
+        @Html.TextBoxFor(x => x.phone_number, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.phone_number, "", new { @style = "color: red" })
+    </div>
+    <div style="margin-top: 20px">
+        <label>University</label>
+        @Html.TextBoxFor(x => x.university, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.university, "", new { @style = "color: red" })
+    </div>
+    <div style="margin-top: 20px">
+        <button class="btn btn-info" id="btn1">Add User</button>
+    </div>
+</form>

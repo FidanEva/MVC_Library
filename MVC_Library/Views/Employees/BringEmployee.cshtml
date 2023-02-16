@@ -1,0 +1,24 @@
+﻿@model MVC_Library.Models.Entity.tbl_employers
+@{
+    ViewBag.Title = "BringEmployee";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+@using (Html.BeginForm("UpdateEmployee", "Employees", FormMethod.Post))
+{
+    <div class="form-group" style="margin-top: 20px">
+        @*@Html.LabelFor(k => k.id)
+            @Html.TextBoxFor(k => k.id, new { @class = "form-control"})*@
+        @*@Html.HiddenFor(k => k.id)*@
+        <input type="hidden" name="id" value="@Model.id" />
+
+        <label style="margin-top: 20px">Employee Full Name</label>
+        @*@Html.TextBoxFor(k => k.name, new { @class = "form-control"})*@
+        <input type="text" name="employee" value="@Model.employee" class="form-control" /> @*eyni seydi*@
+
+    </div>
+    <div>
+        <button type="submit" class="btn btn-warning">Update</button>
+    </div>
+}
+

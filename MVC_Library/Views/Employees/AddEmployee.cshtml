@@ -1,0 +1,19 @@
+﻿@model MVC_Library.Models.Entity.tbl_employers
+@{
+    ViewBag.Title = "AddEmployee";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>Add Employee</h2>
+
+<form class="form-gorup" method="post">
+    <div style="margin-top: 20px">
+        <label>Employee full name</label>
+        @*<input type="text" class="form-control" name="employee">*@
+        @Html.TextBoxFor(x => x.employee, new { @class = "form-control"})
+        @Html.ValidationMessageFor(x => x.employee, "", new { @style = "color: red"}) 
+    </div>
+    <div style="margin-top: 20px">
+        <button class="btn btn-info" id="btn1">Add Employee</button>
+    </div>
+</form>

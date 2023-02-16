@@ -1,0 +1,35 @@
+﻿@using MVC_Library.Models.Entity
+@model List < tbl_action >
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>Actions</h2>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Action ID</th>
+        <th>User</th>
+        <th>Book</th>
+        <th>Employee</th>
+        <th>Take time</th>
+        <th>Return time</th>
+        <th>Get back book</th>
+    </tr>
+
+    @foreach (var i in Model)
+    {
+        <tr>
+            <td>@i.id</td>
+            <td>@i.tbl_users.name&nbsp @i.tbl_users.surname</td>
+            <td>@i.tbl_book.name</td>
+            <td>@i.tbl_employers.employee</td>
+            <td>@Convert.ToDateTime(i.take_time).ToString("dd/MMM/yyyy")</td>
+            <td>@Convert.ToDateTime(i.return_time).ToString("dd/MMM/yyyy")</td>
+            <td><a href="/OnLoan/GetBackBook/@i.id" class="btn btn-primary">Get back book</a></td>
+        </tr>
+
+    }
+</table>
+

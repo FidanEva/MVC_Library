@@ -1,0 +1,41 @@
+﻿@model MVC_Library.Models.Entity.tbl_action
+@{
+    ViewBag.Title = "LendBook";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>Lend Book</h2>
+
+
+<form class="form-group" method="post">
+    <div style="margin-top: 20px">
+        <label>User</label>
+        @Html.TextBoxFor(k => k.the_user, new { @class = "form-control" })
+    </div>
+
+    <div style="margin-top: 20px">
+        <label>Book</label>
+        @*@Html.TextBoxFor(k => k.book, new { @class = "form-control" })*@
+        @Html.DropDownListFor(k => k.book, (List<SelectListItem>)ViewBag.books, new { @class = "form-control" })
+    </div>
+
+    <div style="margin-top: 20px">
+        <label>Employee</label>
+        @Html.TextBoxFor(k => k.employee, new { @class = "form-control" })
+    </div>
+
+    <div style="margin-top: 20px">
+        <label>Take time</label>
+        <input type ="text" name ="take_time" class="form-control" value="@DateTime.Now.ToShortDateString()"/>
+    </div>
+
+    <div style="margin-top: 20px">
+        <label>Return time</label>
+        <input type="text" name="return_time" class="form-control" value="@DateTime.Now.AddDays(7).ToShortDateString()" />
+    </div>
+
+    <div style="margin-top: 20px">
+        <button class="btn btn-info">Add new action</button>
+        <input type="hidden" value="False" name="action_status" />
+    </div>
+</form>

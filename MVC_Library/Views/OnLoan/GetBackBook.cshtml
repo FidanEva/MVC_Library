@@ -1,0 +1,34 @@
+﻿@model MVC_Library.Models.Entity.tbl_action
+@{
+    ViewBag.Title = "GetBackBook";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+@using (Html.BeginForm("UpdateLend", "OnLoan", FormMethod.Post))
+{
+    <div class="form-group" style="margin-top: 20px">
+        <input type="hidden" name="id" value="@Model.id" />
+
+        <label style="margin-top: 20px">Book Name</label>
+        <input type="text" name="book" value="@Model.tbl_book.name" class="form-control" /> 
+
+        <label style="margin-top: 20px">User Name</label>
+        <input type="text" name="user" value="@Model.tbl_users.name" class="form-control" />
+         
+        <label style="margin-top: 20px">Employee Name</label>
+        <input type="text" name="employee" value="@Model.tbl_employers.employee" class="form-control" /> 
+
+        <label style="margin-top: 20px">Taking Date</label>
+        <input type="text" name="taking" value="@Model.take_time" class="form-control" /> 
+
+        <label style="margin-top: 20px">Returning Date</label>
+        <input type="text" name="returning" value="@Model.return_time" class="form-control" /> 
+
+        <label style="margin-top: 20px">Bringing Date</label>
+        <input type="text" name="bringing" value="@DateTime.Now.ToShortDateString()" class="form-control" /> 
+
+    </div>
+    <div>
+        <button type="submit" class="btn btn-warning">Get Back Book</button>
+    </div>
+}

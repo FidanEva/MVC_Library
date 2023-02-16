@@ -1,0 +1,38 @@
+﻿@model MVC_Library.Models.Entity.tbl_book
+@{
+    ViewBag.Title = "BringBook";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+@using (Html.BeginForm("UpdateBook", "Book", FormMethod.Post))
+{
+    <div class="form-group" style="margin-top: 20px">
+        @*@Html.LabelFor(k => k.id)
+            @Html.TextBoxFor(k => k.id, new { @class = "form-control"})*@
+        @*@Html.HiddenFor(k => k.id)*@
+        <input type="hidden" name="id" value="@Model.id" />
+
+        <label style="margin-top: 20px">Book Name</label>
+        @*@Html.TextBoxFor(k => k.name, new { @class = "form-control"})*@
+        <input type="text" name="name" value="@Model.name" class="form-control" /> @*eyni seydi*@
+
+        <label style="margin-top: 20px">Writer Name</label>
+        @Html.DropDownListFor(k => k.tbl_writer.id, (List<SelectListItem>)ViewBag.writers, new { @class = "form-control" })
+
+        <label style="margin-top: 20px">Category</label>
+        @Html.DropDownListFor(k => k.tbl_category.id, (List<SelectListItem>)ViewBag.categories, new { @class = "form-control" })
+
+        <label style="margin-top: 20px">Publication year</label>
+        <input type="text" name="publication_year" value="@Model.publication_year" class="form-control" />
+
+        <label style="margin-top: 20px">Publisher</label>
+        <input type="text" name="publisher" value="@Model.publisher" class="form-control" />
+
+        <label style="margin-top: 20px">Page</label>
+        <input type="text" name="page" value="@Model.page" class="form-control" />
+    </div>
+    <div>
+        <button type="submit" class="btn btn-warning">Update</button>
+    </div>
+}
+

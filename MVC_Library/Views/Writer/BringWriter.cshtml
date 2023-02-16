@@ -1,0 +1,26 @@
+﻿@model MVC_Library.Models.Entity.tbl_writer
+@{
+    ViewBag.Title = "BringWriter";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>Update writer</h2>
+@using (Html.BeginForm("UpdateWriter", "Writer", FormMethod.Post))
+{
+    <div class="form-group" style="margin-top: 20px">
+        <input type="hidden" name="id" value="@Model.id"/>
+
+        <label>Name</label>
+        @Html.TextBoxFor(k => k.name, new { @class = "form-control" })
+
+        <label style="margin-top: 20px">Surname</label>
+        @Html.TextBoxFor(k => k.surname, new { @class = "form-control" })
+
+        <label style="margin-top: 20px">Details</label>
+        @Html.TextBoxFor(k => k.detail, new { @class = "form-control" })
+    </div>
+
+    <div>
+        <button class="btn btn-warning">Update</button>
+    </div>
+}

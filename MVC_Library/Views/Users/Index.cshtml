@@ -1,0 +1,45 @@
+﻿@using MVC_Library.Models.Entity
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<tbl_users>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>Users</h2>
+
+<table class="table table-bordered">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Email</th>
+        <th>Password</th>
+        <th>Username</th>
+        <th>Phone number</th>
+        <th>University</th>
+        <th>Delete</th>
+        <th>Update</th>
+    </tr>
+    @foreach (var user in Model)
+    {
+        <tr>
+            <td>@user.id</td>
+            <td>@user.name</td>
+            <td>@user.surname</td>
+            <td>@user.email</td>
+            <td>@user.password</td>
+            <td>@user.user_name</td>
+            <td>@user.phone_number</td>
+            <td>@user.university</td>
+            @*<td><a href="/Category/DelCategory/@ctg.id" class="btn btn-danger">Delete</a></td>*@
+            @*<td>@Html.ActionLink("Delete", "DelCategory", new { id = ctg.id }, new { @class = "btn btn-danger", onclick = "return confirm('Are you sure remove this column')" }) </td>*@
+            <td><a href="/Users/DelUser/@user.id" onclick="return confirm('Are you sure remove this category with the name of @user.user_name?')" class="btn btn-danger">Delete</a> </td>
+            <td><a href="/Users/BringUser/@user.id" class="btn btn-success">Update</a></td>
+        </tr>
+    }
+</table>
+
+@Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page}))
+<a href="/Users/AddUser" class="btn btn-primary">Add new user</a>

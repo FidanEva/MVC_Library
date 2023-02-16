@@ -1,0 +1,43 @@
+﻿@model MVC_Library.Models.Entity.tbl_users
+@{
+    ViewBag.Title = "BringUser";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>Update User</h2>
+
+@using (Html.BeginForm("UpdateUser", "Users", FormMethod.Post))
+{
+    <div class="form-group" style="margin-top: 20px">
+        <input type="hidden" name="id" value="@Model.id" />
+
+        <label style="margin-top: 20px">Name</label>
+        <input type="text" name="name" value="@Model.name" class="form-control" />
+
+        <label style="margin-top: 20px">Surname</label>
+        <input type="text" name="surname" value="@Model.surname" class="form-control" />
+
+        <label style="margin-top: 20px">Email address</label>
+        <input type="text" name="email" value="@Model.email" class="form-control" />
+
+        <label style="margin-top: 20px">Password</label>
+        <input type="text" name="password" value="@Model.password" class="form-control" />
+
+        <label style="margin-top: 20px">User name</label>
+        <input type="text" name="user_name" value="@Model.user_name" class="form-control" />
+
+        <label style="margin-top: 20px">Profil Photo</label>
+        <input type="text" name="prof_photo" value="@Model.prof_photo" class="form-control" />
+
+        <label style="margin-top: 20px">Phone Number</label>
+        <input type="text" name="phone_number" value="@Model.phone_number" class="form-control" />
+
+        <label style="margin-top: 20px">University</label>
+        <input type="text" name="university" value="@Model.university" class="form-control" />
+
+    </div>
+    <div>
+        <button type="submit" class="btn btn-warning">Update</button>
+    </div>
+}
+
